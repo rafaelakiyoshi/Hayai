@@ -2,11 +2,18 @@
   "name": "Hayai",
   "version": "1.0.0",
   "description": "A Next.js boilerplate",
-  "main": "index.js",
   "repository": "git@github.com:rafaelakiyoshi/Hayai.git",
   "author": "Rafael Akiyoshi <rafah94@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "build-docker": "docker build -t next-app .",
+    "run-docker": "docker run --rm -it -p 3000:3000 next-app"
+  },
   "dependencies": {
+    "next": "latest",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
