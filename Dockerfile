@@ -5,7 +5,8 @@ COPY . .
 
 RUN ls
 RUN yarn install
-RUN yarn build
+# RUN yarn build
 
 EXPOSE 3000
-CMD ["yarn", "start"]
+EXPOSE 49153
+CMD ["yarn", "dev"]

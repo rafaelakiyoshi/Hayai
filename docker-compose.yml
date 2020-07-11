@@ -1,0 +1,13 @@
+version: "3.6"
+services:
+  hayai:
+    container_name: hayai
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+        - 3000:3000
+        - 49153:49153
+    volumes:
+        - .:/app
+        - /app/node_modules
