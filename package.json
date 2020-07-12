@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "dev:docker": "docker-compose up",
+    "dev:docker --build": "docker-compose up --build",
     "build-docker": "docker build -t next-app .",
     "run-docker": "docker run --rm -it -p 3000:3000 next-app"
   },
@@ -25,5 +26,6 @@
     "postcss-preset-env": "^6.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
-  }
+  },
+  "devDependencies": {}
 }
