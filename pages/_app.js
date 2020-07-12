@@ -1,5 +1,13 @@
-import "antd/dist/antd.css";
+import Head from "next/head";
+import 'antd/dist/antd.compact.css';
 
 export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <title>Hayai Boilerplate</title>
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }
