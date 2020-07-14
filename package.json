@@ -17,15 +17,26 @@
   "dependencies": {
     "@ant-design/icons": "4.2.1",
     "@next/bundle-analyzer": "^9.1.4",
-    "antd": "4.4.1",
+    "@zeit/next-less": "^1.0.1",
+    "antd": "4.4.2",
     "babel-plugin-import": "1.13.0",
     "cross-env": "^7.0.2",
     "dayjs": "1.8.28",
     "esm": "^3.2.25",
+    "less": "^3.12.0",
     "next": "latest",
     "postcss-preset-env": "^6.7.0",
     "react": "^16.13.1",
+    "react-css-theme-switcher": "^0.1.5",
     "react-dom": "^16.13.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "autoprefixer": "^9.8.5",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-debug": "^4.0.0",
+    "gulp-less": "^4.0.1",
+    "gulp-postcss": "^8.0.0",
+    "less-plugin-npm-import": "^2.1.0"
+  }
 }
