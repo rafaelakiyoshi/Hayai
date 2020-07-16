@@ -1,8 +1,11 @@
 import { Switch, Card } from "antd";
-
 import { useThemeSwitcher } from "react-css-theme-switcher";
+import fetcher from "../libs/fetcher";
+import useSWR from "swr";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
-export default function Home() {
+export default function Home({ initialData }) {
+  const { data } = useSWR(URL, fetcher, { initialData });
   const [isDarkMode, setIsDarkMode] = React.useState();
   const { switcher, currentTheme, status, themes } = useThemeSwitcher();
 
@@ -14,15 +17,20 @@ export default function Home() {
   if (status === "loading") {
     return null;
   }
-
+  console.log(data);
   return (
     <>
       <div className="welcome">
         <Card style={{ width: 300, textAlign: "center", marginTop: "10%" }}>
           <h1>Hayai!</h1>
           <h4>Boilerplate</h4>
-          <Switch checked={isDarkMode} onChange={toggleTheme} />
+          <ThemeSwitcher />
         </Card>
+        {data && (
+          <>
+            <h6>Forks: {data.forks_count}</h6>
+          </>
+        )}
       </div>
       <style jsx>{`
         .welcome {
@@ -42,4 +50,9 @@ export default function Home() {
       `}</style>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const data = await fetcher("https://api.github.com/repos/rafaelakiyoshi/hayai");
+  return { props: { initialData: data } };
 }

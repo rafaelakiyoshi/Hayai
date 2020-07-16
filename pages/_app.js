@@ -1,3 +1,4 @@
+import { useState, useEffect  } from "react";
 import Head from "next/head";
 import { ThemeSwitcherProvider } from "react-css-theme-switcher";
 
@@ -6,26 +7,27 @@ const themes = {
   light: `/light-theme.module.css`,
 };
 
-export default class MyApp extends React.Component {
-  state = {
-    rendered: true
-  }
-  componentDidMount() {
-    this.setState({ rendered: true });
-  }
+const MyApp = props => {
+  const [rendered, updateRendered] = useState(false);
+  const [theme, updateTheme] = useState("dark");
 
-  render() {
-    const { Component, pageProps } = this.props;
-    const { rendered } = this.state;
+  useEffect(() => {
+    const theme = window.localStorage.getItem("theme");
+    updateTheme(theme);
+    updateRendered(true);
+  },[]);
+
+    const { Component, pageProps } = props;
     return (
       <>
         <Head>
           <title>Hayai Boilerplate</title>
         </Head>
-        <ThemeSwitcherProvider themeMap={themes} defaultTheme="light" insertionPoint="styles-insertion-point">
-          <Component {...pageProps} />
+        <ThemeSwitcherProvider themeMap={themes} defaultTheme={theme}>
+          {rendered && <Component {...pageProps} />}
         </ThemeSwitcherProvider>
       </>
     );
-  }
 }
+
+export default MyApp;
